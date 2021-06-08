@@ -81,11 +81,11 @@ $(document).ready(function(){
 		autoBlur: false,
 		smoothPlayBar: false,
 		keyEnabled: false,
-		loop: true,
+		//loop: true,
 		audioFullScreen: false
 	});
-	<!-- $('.jp-repeat').click(); -->
-	<!-- $('.jp-volume-max').click(); -->
+	$('.jp-repeat').click();
+	$('.jp-volume-max').click();
 
 	function setplaylist(listarray) {
 		var tempplaylist = [];
