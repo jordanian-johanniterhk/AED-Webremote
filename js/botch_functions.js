@@ -5,29 +5,28 @@
 
 var playlist_aed_start = ['beep-00','start-01','start-02',
 'silence_1sec',
-'removeclothing-01','removeclothing-02',
+'removeclothing-01',
 'silence_1sec',
 'peelpad-01','peelpad-03',
-'silence_5sec',
 'peelpad-05','peelpad-07',
 'silence_1min'];
 
 var playlist_aed_pads_bad = [
-'silence_5sec','padsloose-01'];
+'silence_1sec','padsloose-01'];
 
 var playlist_aed_shockable = [
-'silence_1sec','beep-00','analyzing-01',
-'silence_5sec',
-'shockadvised-01','silence_5sec',
-'presstoshock-01a',
+'beep-00','analyzing-01',
+'silence_1sec',
+'shockadvised-01','silence_1sec',
+'presstoshock-01a','presstoshock-01a',
 'shocknotdelivered-01','safetotouch-01',
 'cpr-00',
 'silence_1min','silence_1min'];
 
 
 var playlist_aed_notshockable = [
-'silence_1sec','beep-00','analyzing-01',
-'silence_5sec',
+'beep-00','analyzing-01',
+'silence_1sec',
 'shocknotadvised-01','safetotouch-01',
 'cpr-00',
 'silence_1min','silence_1min'];
@@ -38,14 +37,14 @@ var playlist_aed_shocked = [
 'cpr-00',
 'silence_1min','silence_1min',
 'silence_1sec','beep-00','analyzing-01',
-'silence_5sec',
-'shockadvised-01','silence_5sec',
+'silence_1sec',
+'shockadvised-01','silence_1sec',
 'beep-00','shockauto-00','shockauto-01','shockauto-02','shockauto-03'];
 
 var playlist_analysis_fail = ['beep-00','beep-00','analysisfailed-01','silence_5sec'];
 
 var playlist_cancel_shock = [
-'shockcancelled-01','safetotouch-01',
+'shockcancelled-01','safetotouch-01','cpr-01',
 'silence_1min','silence_1min'];
 
 var playlist_aed_batterylow = ['beep-00','batterylow',
@@ -55,7 +54,7 @@ var playlist_aed_maintenance = ['beep-00','maintenance-01',
 'silence_1min'];
 
 
-var language = "zh-hk";
+var language = "yue-hk";
 
 
 
@@ -77,11 +76,11 @@ $(document).ready(function(){
 		},
 		swfPath: "dist/jplayer",
 		supplied: "webmv, ogv, m4v, oga, mp3",
+		loop: true,
 		useStateClassSkin: true,
 		autoBlur: false,
 		smoothPlayBar: false,
 		keyEnabled: false,
-		//loop: true,
 		audioFullScreen: false
 	});
 	$('.jp-repeat').click();
@@ -105,11 +104,10 @@ $(document).ready(function(){
 	}
 	
 	
-	$('#btn_zhhk').click(function() {
-		language = 'zh-hk';
-	});
-	$('#btn_enus').click(function() {
-		language = 'en-us';
+	
+	$('#aed_model').change(function() {
+		language = $( "#aed_model" ).val();
+		$('#language').html('目前機種：'+$( "#aed_model" ).val());
 	});
 	
 	$('#btn_power_on').click(function() {
